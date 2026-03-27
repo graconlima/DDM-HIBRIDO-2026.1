@@ -1,4 +1,4 @@
-import 'package:ddm_hibrido/paginas/1)%20exemplos_dart/poo.dart';
+import 'poo.dart';
 
 void main() {
   //Exemplo Encapsulamento com  POO 1
