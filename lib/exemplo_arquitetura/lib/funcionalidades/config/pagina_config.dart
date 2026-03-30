@@ -9,9 +9,10 @@ class PaginaConfig extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Configurações')),
+      drawer: MudarTema(),
       body: const Padding(
         padding: EdgeInsets.all(16),
-        child: MudarTema(),
+
       ),
     );
   }
