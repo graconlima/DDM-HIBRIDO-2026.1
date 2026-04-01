@@ -1,17 +1,18 @@
+import '../tokens/token_cores.dart';
 import 'package:flutter/material.dart';
 
-ThemeData padraoLight = ThemeData(
+ThemeData govBrLight = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.blue,
+    seedColor: CorTokens.govBr,
     brightness: Brightness.light,
   ),
 );
 
-ThemeData padraoDark = ThemeData(
+ThemeData govBrDark = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.blue,
+    seedColor: CorTokens.govBr,
     brightness: Brightness.dark,
   ),
 );

@@ -9,7 +9,8 @@ class MudarTema extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<ControladorTema>();
+    final controlador = context.read<ControladorTema>();//Provider
+    //final controlador = Modular.read<ControladorTema>();//MobX
     final colors = Theme.of(context).colorScheme;
 
     return Drawer(
@@ -44,7 +45,7 @@ class MudarTema extends StatelessWidget {
               ),
             ),
 
-            _SeletorModoTema(controller: controller),
+            _SeletorModoTema(controller: controlador),
 
             const Padding(
               padding: EdgeInsets.all(16),
@@ -54,7 +55,7 @@ class MudarTema extends StatelessWidget {
               ),
             ),
 
-            _SeletorTema(controller: controller),
+            _SeletorTema(controller: controlador),
           ],
         ),
       ),

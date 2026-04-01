@@ -1,11 +1,12 @@
+/* //Exemplo controlador: Provider
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'fabrica_temas.dart';
 
 //trocar tema, notificar UI, salvar preferências
 
-class ControladorTema extends ChangeNotifier {
+class ControladorTemaProvider extends ChangeNotifier {
   AppThemeType _themeType = AppThemeType.padrao;
   ThemeMode _themeMode = ThemeMode.system;
 
@@ -41,5 +42,34 @@ class ControladorTema extends ChangeNotifier {
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('themeMode', mode.index);
+  }
+}*/
+
+
+//Exemplo controlador: MobX
+import 'package:mobx/mobx.dart';
+import 'package:flutter/material.dart';
+import 'fabrica_temas.dart';
+
+part 'controlador_tema.g.dart';
+
+class ControladorTema = _ControladorTema with _$ControladorTema;
+
+abstract class _ControladorTema with Store {
+
+  @observable
+  AppThemeType themeType = AppThemeType.padrao;
+
+  @observable
+  ThemeMode themeMode = ThemeMode.system;
+
+  @action
+  void setThemeType(AppThemeType type) {
+    themeType = type;
+  }
+
+  @action
+  void setThemeMode(ThemeMode mode) {
+    themeMode = mode;
   }
 }

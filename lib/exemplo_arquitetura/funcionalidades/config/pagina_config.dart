@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../lib/funcionalidades/config/mudar_tema.dart';
+import '../config/mudar_tema.dart';
 
 class PaginaConfig extends StatelessWidget {
   const PaginaConfig({super.key});

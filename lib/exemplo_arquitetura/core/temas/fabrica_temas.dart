@@ -1,5 +1,5 @@
-import 'package:ddm_20261/exemplo_arquitetura/lib/core/temas/temas/tema_gov.dart';
-import 'package:ddm_20261/exemplo_arquitetura/lib/core/temas/temas/tema_padrao.dart';
+import '../temas/temas/tema_gov.dart';
+import '../temas/temas/tema_padrao.dart';
 import 'package:flutter/material.dart';
 
 enum AppThemeType { padrao, govBr, suap }
