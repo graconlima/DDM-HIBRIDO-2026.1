@@ -91,6 +91,7 @@ void main(){
 
 void main(){
   Pessoa p = Pessoa(nome: "Joao");
+  //Pessoa p = Pessoa(sobrenome: "", nome: "Joao");//nao importa a ordem
   p.sobrenome = "Maria de Jesus";
 
   print("O nome da pessoa e: ${p.nome} ${p.sobrenome}");
@@ -107,7 +108,7 @@ void main(){
   }
 
   double media(){
-    return (nota1+nota2)/2;
+    return 0.0;
   }
 }
 
@@ -115,7 +116,8 @@ class Tecnico extends Aluno{
   Tecnico(super.nome, super.nota1, super.nota2);
   @override
   double media() {
-    return super.media();
+    //return super.media();
+    return (nota1+nota2)/2;
   }
 }
 

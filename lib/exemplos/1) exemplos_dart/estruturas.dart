@@ -5,7 +5,6 @@ var dolar = 500, real  = 5.34;
 var resultado = dolar * real;
 print("O valor de \$ $dolar em reais e: $resultado");
 
-
 //Exemplo 2 - condicional simples
 /*var numero = 11;
 
