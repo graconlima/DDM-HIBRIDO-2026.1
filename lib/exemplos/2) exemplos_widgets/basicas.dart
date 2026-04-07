@@ -110,7 +110,7 @@ class MinhaWidget extends StatelessWidget{
 
 
 //Exemplo 8 - icones e disposição do código em Dart
-void main(){
+/*void main(){
   runApp(MinhaWidget());
 }
 
@@ -130,7 +130,7 @@ class MinhaWidget extends StatelessWidget{
       )
     );
   }
-}
+}*/
 
 //Exemplo 9 - entrada de dados (TextField - decoracao)
 /*void main(){
