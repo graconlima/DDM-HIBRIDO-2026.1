@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 //Exemplo 1 - container
 /*void main(){
@@ -37,6 +38,7 @@ class MinhaWidget extends StatelessWidget{
 class MinhaWidget extends StatelessWidget{
   Widget build(BuildContext bc){
     return MaterialApp(
+
         title: "Ola Mundo!",
         home: Scaffold(
             appBar: AppBar(title: Text("Ola")),
@@ -53,6 +55,59 @@ class MinhaWidget extends StatelessWidget{
     );
   }
 }*/
+
+//Exemplo - Alterando cor da StatusBar e posicionamento com Stack
+void main(){
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.red
+  ));
+  runApp(MinhaWidget());
+}
+
+class MinhaWidget extends StatelessWidget{
+  Widget build(BuildContext bc){
+    return MaterialApp(
+        title: "Ola Mundo!",
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text("Ola"),
+            backgroundColor: Colors.blue,
+            systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.black,
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.dark,
+          ),
+
+          ),
+          body: Stack(
+            children: [
+              Container(
+                width: 300,
+                height: 300,
+                color: Colors.blue,
+              ),
+              Positioned(
+                top: 20,
+                left: 20,
+                width: 100,
+                height: 50,
+                child: Container(color: Colors.red),
+              ),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+              onPressed: (){},
+              child: Icon(
+                Icons.star,
+                color: Colors.amber,
+                size: 40,
+              )
+          ),
+        )
+    );
+  }
+}
+
 
 //Exemplo 5 - Widgets para aparência unificada (Cupertino)
 /*import 'package:flutter/cupertino.dart';
