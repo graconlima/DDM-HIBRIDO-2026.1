@@ -57,7 +57,7 @@ class MinhaWidget extends StatelessWidget{
 }*/
 
 //Exemplo - Alterando cor da StatusBar e posicionamento com Stack
-void main(){
+/*void main(){
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.red
   ));
@@ -71,7 +71,7 @@ class MinhaWidget extends StatelessWidget{
         home: Scaffold(
           appBar: AppBar(
             title: Text("Ola"),
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.amber,
             systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Colors.black,
             statusBarIconBrightness: Brightness.light,
@@ -89,9 +89,9 @@ class MinhaWidget extends StatelessWidget{
               Positioned(
                 top: 20,
                 left: 20,
-                width: 100,
+                width: 100,//prioridade de posicionamento sobre a definicao do container
                 height: 50,
-                child: Container(color: Colors.red),
+                child: Container(color: Colors.black26, width: 50, height: 50),
               ),
             ],
           ),
@@ -106,7 +106,7 @@ class MinhaWidget extends StatelessWidget{
         )
     );
   }
-}
+}*/
 
 
 //Exemplo 5 - Widgets para aparência unificada (Cupertino)
@@ -119,7 +119,7 @@ class MinhaWidget extends StatelessWidget{
   Widget build(BuildContext bc){
     return CupertinoApp(
         title: "Ola Mundo!",
-        home: CupertinoPageScaffold(
+        home: CupertinoPageScaffoxld(
             child: Center(child: Text("Mundo"))
         )
     );
@@ -165,7 +165,7 @@ class MinhaWidget extends StatelessWidget{
 
 
 //Exemplo 8 - icones e disposição do código em Dart
-/*void main(){
+void main(){
   runApp(MinhaWidget());
 }
 
@@ -185,7 +185,7 @@ class MinhaWidget extends StatelessWidget{
       )
     );
   }
-}*/
+}
 
 //Exemplo 9 - entrada de dados (TextField - decoracao)
 /*void main(){

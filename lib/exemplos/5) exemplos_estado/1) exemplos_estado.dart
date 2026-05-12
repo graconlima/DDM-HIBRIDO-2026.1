@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 //Exemplo 1: as classes StatefulWidget e State
 /*void main() => runApp(MinhaAplicacao());
 
@@ -38,7 +37,7 @@ class MinhaHomePageEstado extends State<MinhaHomePage>{
 
 class IMC extends StatelessWidget{
   double a = 1.70, p = 70.0, imc = 0.0;
-  String textoIMC = "";
+  String textoIMC = "O IMC e";
 
   atualizarTexto(){
     textoIMC = "O IMC e $imc";
@@ -79,7 +78,7 @@ class AtualizadorTexto extends StatefulWidget{
 
 class AtualizadorTextoEstado extends State{
   double a = 1.70, p = 70.0, imc = 0;
-  String textoIMC = "";
+  String textoIMC = "O IMC e";
 
   atualizarTexto(){
     setState(() {
@@ -163,8 +162,8 @@ class AtualizadorTextoEstado extends State{
   }
 }*/
 
-//Exemplo 4: Buscando Imagem com StatelessWidget
-/*void main(){
+//Exemplo 4: Buscando Imagem com StatelessWidget (nao atualiza a interface)
+void main(){
   runApp(MinhaWidget());
 }
 
@@ -199,9 +198,57 @@ class MinhaWidget extends StatelessWidget{
         )
     );
   }
-}*/
+}
 
-//Exemplo 5: Buscando Imagem com StetefulWidget (A fazer)
+//Exemplo 5: Buscando Imagem com StetefulWidget e NavBar
+/*void main(){
+
+  runApp(MA());
+}
+
+class MA extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return MinhaWidget();
+  }
+}
+
+class MinhaWidget extends State{
+  double a = 1.70, p = 70.0, imc = 0.0;
+  var indice = 1;
+  var imgs = [
+    "https://picsum.photos/250?image=9",
+    "https://picsum.photos/250?image=10"
+  ];
+
+  Widget build(BuildContext context) {
+    return
+      MaterialApp(
+          home: Scaffold(
+              bottomNavigationBar: BottomNavigationBar(
+                  onTap: (i){setState(() {
+                    indice = i;
+                  });},
+                  items: [
+                    BottomNavigationBarItem(
+                      icon:  Icon(Icons.adb),
+                      label: "Android",
+                    ),
+                    BottomNavigationBarItem(
+                        icon:  Icon(Icons.apple),
+                        label: "IOS"
+                    )
+                  ]
+              ),
+              body: Column(
+                  children: <Widget>[
+                    Image.network(imgs[indice])
+                  ]
+              )
+          )
+      );
+  }
+}*/
 
 //Exemplo 6: Estado efemero da aplicação com Controle Deslizante
 /*void main() {
