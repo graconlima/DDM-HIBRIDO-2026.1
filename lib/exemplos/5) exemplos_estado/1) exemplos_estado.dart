@@ -163,7 +163,7 @@ class AtualizadorTextoEstado extends State{
 }*/
 
 //Exemplo 4: Buscando Imagem com StatelessWidget (nao atualiza a interface)
-void main(){
+/*void main(){
   runApp(MinhaWidget());
 }
 
@@ -195,6 +195,48 @@ class MinhaWidget extends StatelessWidget{
                 size: 40,
               )
           ),
+        )
+    );
+  }
+}*/
+
+//Exemplo 4.1: Buscando Imagem com StatelessWidget (atualizacao da interface com ValueNotifier)
+void main(){
+  runApp(MinhaWidget());
+}
+
+class MinhaWidget extends StatelessWidget{
+
+  ValueNotifier<int> contador = ValueNotifier<int>(0);
+  String atualizarURLImagem([int contador = 0]){
+    contador++;
+    print('https://picsum.photos/250?image=$contador');
+    return "https://picsum.photos/250?image=$contador";
+  }
+
+  Widget build(BuildContext bc){
+
+    String imagemURL = atualizarURLImagem();
+
+    return MaterialApp(
+        title: "Ola Mundo!",
+        home: ValueListenableBuilder<int>(
+          valueListenable: contador,
+          builder: (c, v, ch){return Scaffold(
+            appBar: AppBar(title: Text("Ola")),
+            body: Center(child: Image.network(atualizarURLImagem(v))),
+            floatingActionButton: FloatingActionButton(
+                onPressed: (){
+                  contador.value++;
+                  atualizarURLImagem(contador.value);
+                },
+                child: Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                  size: 40,
+                )
+            ),
+          );},
         )
     );
   }
