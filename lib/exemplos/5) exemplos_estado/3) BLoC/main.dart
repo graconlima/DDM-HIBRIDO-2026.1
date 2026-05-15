@@ -1,7 +1,7 @@
-import 'package:ddm_hibrido/paginas/5)%20exemplos_estado/3)%20BLoC/blocs.dart';
-import 'package:ddm_hibrido/paginas/5)%20exemplos_estado/3)%20BLoC/evento.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'blocs.dart';
+import 'evento.dart';
 
 void main(){
   runApp(AtualizadorTexto());
@@ -9,6 +9,7 @@ void main(){
 class AtualizadorTexto extends StatefulWidget{
   AtualizadorTextoEstado createState() => AtualizadorTextoEstado();
 }
+
 class AtualizadorTextoEstado extends State{
   IMCEvento ie = new IMCEvento();
   AtualizadorTextoBloc atb = new AtualizadorTextoBloc();

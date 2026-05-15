@@ -201,7 +201,7 @@ class MinhaWidget extends StatelessWidget{
 }*/
 
 //Exemplo 4.1: Buscando Imagem com StatelessWidget (atualizacao da interface com ValueNotifier)
-void main(){
+/*void main(){
   runApp(MinhaWidget());
 }
 
@@ -240,7 +240,7 @@ class MinhaWidget extends StatelessWidget{
         )
     );
   }
-}
+}*/
 
 //Exemplo 5: Buscando Imagem com StetefulWidget e NavBar
 /*void main(){
@@ -342,7 +342,7 @@ class _ControleDeslizante extends State {
 }*/
 
 //Exemplo 7 - Estado global da aplicação com Controle Deslizante
-/*import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 void main() {
   runApp(
       ChangeNotifierProvider(
@@ -433,4 +433,4 @@ class _ControleDeslizante extends State {
         )
     );
   }
-}*/
+}

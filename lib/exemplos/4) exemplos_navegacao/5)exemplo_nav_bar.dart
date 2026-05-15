@@ -5,7 +5,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  //
   final ValueNotifier<int> _indicePai = ValueNotifier<int>(0);
 
   final List<Widget> _telas = const [
