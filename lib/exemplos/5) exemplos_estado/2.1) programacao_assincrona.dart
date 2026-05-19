@@ -5,7 +5,7 @@
   return 7;
 }
 
-void main()async {
+void main() async {
   for(int i = 0; i <= 7;i++) {
     int n = await buscarNumero();
     print("Numero: $n");
@@ -20,7 +20,7 @@ Stream<int> buscarNumeros() async*{
   }
 }
 
-void main()async {
+void main() async {
   await for(int n in buscarNumeros()){
     print("Numero: $n");
   }
