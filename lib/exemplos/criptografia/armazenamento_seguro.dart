@@ -3,28 +3,29 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//para esse exemplo, considerar o projeto biblioteca via http
 class ArmazenadorSeguro {
   // Inicializa o armazenamento seguro
-  final _storage = const FlutterSecureStorage();
+  final _armazenador = const FlutterSecureStorage();
 
   // 1. Gravar dados
   Future<void> salvarToken(String token) async {
-    await _storage.write(key: 'jwt_token', value: token);
+    await _armazenador.write(key: 'jwt_token', value: token);
   }
 
   // 2. Ler dados
   Future<String?> obterToken() async {
-    return await _storage.read(key: 'jwt_token');
+    return await _armazenador.read(key: 'jwt_token');
   }
 
   // 3. Deletar um dado específico
   Future<void> deletarToken() async {
-    await _storage.delete(key: 'jwt_token');
+    await _armazenador.delete(key: 'jwt_token');
   }
 
   // 4. Limpar tudo
   Future<void> limparTudo() async {
-    await _storage.deleteAll();
+    await _armazenador.deleteAll();
   }
 }
 
