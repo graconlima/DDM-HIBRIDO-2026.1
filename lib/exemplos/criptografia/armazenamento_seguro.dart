@@ -3,7 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-//para esse exemplo, considerar o projeto biblioteca via http
+//para esse exemplo, considerar o projeto graconlima/biblioteca via http
 class ArmazenadorSeguro {
   // Inicializa o armazenamento seguro
   final _armazenador = const FlutterSecureStorage();
