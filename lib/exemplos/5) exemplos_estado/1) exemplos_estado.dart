@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 //Exemplo 1: as classes StatefulWidget e State
 /*void main() => runApp(MinhaAplicacao());
 
@@ -38,7 +37,7 @@ class MinhaHomePageEstado extends State<MinhaHomePage>{
 
 class IMC extends StatelessWidget{
   double a = 1.70, p = 70.0, imc = 0.0;
-  String textoIMC = "";
+  String textoIMC = "O IMC e";
 
   atualizarTexto(){
     textoIMC = "O IMC e $imc";
@@ -79,7 +78,7 @@ class AtualizadorTexto extends StatefulWidget{
 
 class AtualizadorTextoEstado extends State{
   double a = 1.70, p = 70.0, imc = 0;
-  String textoIMC = "";
+  String textoIMC = "O IMC e";
 
   atualizarTexto(){
     setState(() {
@@ -163,7 +162,7 @@ class AtualizadorTextoEstado extends State{
   }
 }*/
 
-//Exemplo 4: Buscando Imagem com StatelessWidget
+//Exemplo 4: Buscando Imagem com StatelessWidget (nao atualiza a interface)
 /*void main(){
   runApp(MinhaWidget());
 }
@@ -201,7 +200,97 @@ class MinhaWidget extends StatelessWidget{
   }
 }*/
 
-//Exemplo 5: Buscando Imagem com StetefulWidget (A fazer)
+//Exemplo 4.1: Buscando Imagem com StatelessWidget (atualizacao da interface com ValueNotifier)
+/*void main(){
+  runApp(MinhaWidget());
+}
+
+class MinhaWidget extends StatelessWidget{
+
+  ValueNotifier<int> contador = ValueNotifier<int>(0);
+  String atualizarURLImagem([int contador = 0]){
+    contador++;
+    print('https://picsum.photos/250?image=$contador');
+    return "https://picsum.photos/250?image=$contador";
+  }
+
+  Widget build(BuildContext bc){
+
+    String imagemURL = atualizarURLImagem();
+
+    return MaterialApp(
+        title: "Ola Mundo!",
+        home: ValueListenableBuilder<int>(
+          valueListenable: contador,
+          builder: (c, v, ch){return Scaffold(
+            appBar: AppBar(title: Text("Ola")),
+            body: Center(child: Image.network(atualizarURLImagem(v))),
+            floatingActionButton: FloatingActionButton(
+                onPressed: (){
+                  contador.value++;
+                  atualizarURLImagem(contador.value);
+                },
+                child: Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                  size: 40,
+                )
+            ),
+          );},
+        )
+    );
+  }
+}*/
+
+//Exemplo 5: Buscando Imagem com StetefulWidget e NavBar
+/*void main(){
+
+  runApp(MA());
+}
+
+class MA extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return MinhaWidget();
+  }
+}
+
+class MinhaWidget extends State{
+  double a = 1.70, p = 70.0, imc = 0.0;
+  var indice = 1;
+  var imgs = [
+    "https://picsum.photos/250?image=9",
+    "https://picsum.photos/250?image=10"
+  ];
+
+  Widget build(BuildContext context) {
+    return
+      MaterialApp(
+          home: Scaffold(
+              bottomNavigationBar: BottomNavigationBar(
+                  onTap: (i){setState(() {
+                    indice = i;
+                  });},
+                  items: [
+                    BottomNavigationBarItem(
+                      icon:  Icon(Icons.adb),
+                      label: "Android",
+                    ),
+                    BottomNavigationBarItem(
+                        icon:  Icon(Icons.apple),
+                        label: "IOS"
+                    )
+                  ]
+              ),
+              body: Column(
+                  children: <Widget>[
+                    Image.network(imgs[indice])
+                  ]
+              )
+          )
+      );
+  }
+}*/
 
 //Exemplo 6: Estado efemero da aplicação com Controle Deslizante
 /*void main() {
@@ -253,7 +342,7 @@ class _ControleDeslizante extends State {
 }*/
 
 //Exemplo 7 - Estado global da aplicação com Controle Deslizante
-/*import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 void main() {
   runApp(
       ChangeNotifierProvider(
@@ -344,4 +433,4 @@ class _ControleDeslizante extends State {
         )
     );
   }
-}*/
+}

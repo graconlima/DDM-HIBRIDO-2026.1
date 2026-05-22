@@ -19,7 +19,7 @@ class MinhaApp extends StatelessWidget{
         title: "Ola Mundo!",
         home: Scaffold(
             appBar: AppBar(title: Text("Ola")),
-            body: Center(child: GestureDetector(onTap: (){print("Clicado!");}, child: Text("Ola Mundo")))
+            body: Center(child: GestureDetector(onTap: (){print("Clicado!");}, child: Text("Ola Mundo", style: TextStyle(backgroundColor: Colors.blue))))
         )
     );
   }
@@ -32,6 +32,18 @@ class MinhaApp extends StatelessWidget{
       child: GestureDetector(onDoubleTap: (){print("Clique duplo");})
   ));
 }*/
+
+//Exemplo 3.1: clique duplo e simples
+/*main(){
+  runApp(Container(
+      color: Color(0xFF00FF00) ,
+      child: GestureDetector(
+        onTap: (){print("Clique simples");},
+        onDoubleTap: (){print("Clique duplo");}
+      )
+  ));
+}*/
+
 
 //Exemplo 4: arrastar e soltar
 /*main(){
@@ -128,7 +140,7 @@ class MinhaApp extends StatelessWidget{
 }*/
 
 //Exemplo 7: zoom
-/*void main(){
+void main(){
   runApp(MaterialApp(home: MinhaApp()));
 }
 
@@ -157,4 +169,4 @@ class MinhaApp extends StatelessWidget{
     var alerta = AlertDialog(title: Text("Informacao"), content: Text(informacao));
     showDialog(context: bc, builder: (bc){return alerta;});
   }
-}*/
+}

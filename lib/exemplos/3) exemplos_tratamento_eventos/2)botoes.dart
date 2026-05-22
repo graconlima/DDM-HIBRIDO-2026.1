@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //Exemplo 1 - botoes
-void main(){
+/*void main(){
   runApp(MinhaWidget());
 }
 
@@ -24,7 +24,7 @@ class MinhaWidget extends StatelessWidget{
         )
     );
   }
-}
+}*/
 
 //Exemplo 2: IMC 2.0: calculando com botao
 /*void main(){
@@ -56,7 +56,7 @@ class IMC extends StatelessWidget{
 }*/
 
 //Exemplo 3: IMC 2.0: calculando com botao (com modelo)
-/*void main(){
+void main(){
   runApp(IMC());
 }
 
@@ -78,4 +78,4 @@ class IMC extends StatelessWidget{
     ]
     )));
   }
-}*/
+}

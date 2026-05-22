@@ -21,11 +21,11 @@ class MinhaApp extends StatelessWidget{
     return Container(
       width: 50,
       height: 50,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(100),
+      padding: EdgeInsets.all(70),
       decoration: BoxDecoration(
         color: Colors.amber,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
         'Caixa decorada',
@@ -75,7 +75,7 @@ class MinhaApp extends StatelessWidget{
                   Icon(Icons.star, color: Colors.amber),
                 ])
 
-            Row(
+            /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.max,
@@ -83,7 +83,7 @@ class MinhaApp extends StatelessWidget{
                   Icon(Icons.star, color: Colors.amber),
                   Icon(Icons.star, color: Colors.amber),
                   Icon(Icons.star, color: Colors.amber),
-                ])
+                ])*/
         )
     );
   }
