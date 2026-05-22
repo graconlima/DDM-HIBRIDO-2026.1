@@ -1,6 +1,6 @@
 import 'package:encrypt/encrypt.dart' as encrypt;
 
-// Exemplo de criptografia AES
+// Exemplo de 4) criptografia AES
 class Encriptador{
   final chave = encrypt.Key.fromLength(32); // Chave de 32 bytes
   final vi = encrypt.IV.fromLength(16);  // Vetor de Inicialização
