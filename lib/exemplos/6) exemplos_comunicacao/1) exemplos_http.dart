@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 
 //Exemplo 1 (didatico)
@@ -15,14 +17,23 @@ import 'package:http/http.dart' as http;
 /*void main() async {
   var c = new http.Client();
   try{
-    final resposta = await http.get(Uri.https("jsonplaceholder.typicode.com", "albums/1"));
+    final resposta = await c.get(Uri.https("jsonplaceholder.typicode.com", "albums/1"));
 
     //exibindo o status de um GET (REST)
     print(resposta.statusCode);
 
     //exibindo o corpo de um GET (REST)
     print(resposta.body);
-  }finally{c.close();}
+  }
+  /*on SocketException{
+    print("Sem conexao a internet");
+  }*/
+  catch (e, s){
+    print("Erro geral: $e");
+    print("Rastreamento: $s");
+  }finally{
+    c.close();
+  }
 }*/
 
 //Exemplo 3 - decodificação JSON
@@ -38,7 +49,7 @@ void main() async {
 }*/
 
 //Exemplo 4 - convertendo a Resposta HTTP em Objeto Dart
-/*import 'dart:convert';
+import 'dart:convert';
 void main() async {
   var resposta = await http.get(Uri.https("jsonplaceholder.typicode.com", "albums/1"));
   var meuAlbum = MeuAlbum.converterJson(jsonDecode(resposta.body));
@@ -57,4 +68,4 @@ class MeuAlbum{
   factory MeuAlbum.converterJson(Map<String, dynamic> dadosJSON){
     return MeuAlbum(id: dadosJSON['id'], idUsuario: dadosJSON['userId'], titulo: dadosJSON['title']);
   }
-}*/
+}

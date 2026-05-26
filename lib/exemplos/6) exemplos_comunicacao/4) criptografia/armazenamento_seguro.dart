@@ -9,18 +9,18 @@ class ArmazenadorSeguro {
   final _armazenador = const FlutterSecureStorage();
 
   // 1. Gravar dados
-  Future<void> salvarToken(String token) async {
-    await _armazenador.write(key: 'jwt_token', value: token);
+  Future<void> salvarDados(String token) async {
+    await _armazenador.write(key: 'dados', value: token);
   }
 
   // 2. Ler dados
-  Future<String?> obterToken() async {
-    return await _armazenador.read(key: 'jwt_token');
+  Future<String?> obterDados() async {
+    return await _armazenador.read(key: 'dados');
   }
 
   // 3. Deletar um dado específico
-  Future<void> deletarToken() async {
-    await _armazenador.delete(key: 'jwt_token');
+  Future<void> deletarDado() async {
+    await _armazenador.delete(key: 'dados');
   }
 
   // 4. Limpar tudo
@@ -29,26 +29,40 @@ class ArmazenadorSeguro {
   }
 }
 
-class Autenticador {
+//Exemplo 1 - salvando dados
+/*void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
   ArmazenadorSeguro as = ArmazenadorSeguro();
-  final String _baseUrl = "http://localhost:8000/api";
+
+  //gravando no armazenamento
+  await as.salvarDados("nome: Aluno 1, idade: 27, aprovado: true");
+  as.obterDados();
+}*/
+
+//Exemplo 2 - Acesso com HTTP (exemplo biblioteca_dsc em localhost)
+/*class Autenticador {
+  ArmazenadorSeguro as = ArmazenadorSeguro();
+  String? baseUrl;
+
+  Autenticador({required this.baseUrl});
 
   // Realiza o login e salva o token JWT
   Future<bool> login(String email, String password) async {
     final response = await http.post(
-      Uri.parse("$_baseUrl/token/"),
+      Uri.parse("$baseUrl/token/"),
       body: {"username": email, "password": password},
     );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
 
-      print(data['access']);
+      print("Token gerado: ${data['access']}");
 
       final String token = data['access']; // Supondo que a API retorne {"token": "..."}
 
       // Salva o token de forma segura
-      await as.salvarToken(token);
+      await as.salvarDados(token);
       return true;
     }
     return false;
@@ -61,21 +75,86 @@ void main() async {
 
   final as = ArmazenadorSeguro();
 
-  final a = Autenticador();
+  final String baseUrl = "http://10.25.2.91:8000/api";
+  final a = Autenticador(baseUrl: baseUrl);
 
   if(await a.login("gracon", "123")){
-    final token = await as.obterToken();
+    final token = await as.obterDados();
 
     if (token != null) {
       final resposta = await http.get(
-        Uri.parse("http://localhost:8000/api/livros"),
+        Uri.parse("$baseUrl/livros/"),
         headers: {
           "Authorization": "Bearer $token", // Formato padrão Bearer Token
         },
       );
 
-      print(resposta.body);
+      print("Resposta: $resposta, corpo: ${resposta.body}");
+    }else{
+      print("Token nulo!");
     }
   }
 
+}*/
+
+//Exemplo 3 - Acesso com HTTPS (exemplo biblioteca_dsc em domínio)
+class Autenticador {
+  ArmazenadorSeguro as = ArmazenadorSeguro();
+  String baseUrl;
+
+  Autenticador({required this.baseUrl});
+
+  Future<bool> login(String email, String password) async {
+    //Passo 1: iniciar a conexao https com o objeto Uri
+    final url = Uri.https(baseUrl, '/api/token/');
+
+    final response = await http.post(
+      url,
+      body: {"username": email, "password": password},
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      print("Token gerado: ${data['access']}");
+
+      final String token = data['access'];
+      await as.salvarDados(token);
+      return true;
+    }
+
+    print("Erro no login: ${response.statusCode} - ${response.body}");
+    return false;
+  }
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final as = ArmazenadorSeguro();
+  //APENAS o domínio, sem 'http://', 'https://' ou '/api'
+  final String baseUrl = "biblioteca.serveblog.net";
+
+  final a = Autenticador(baseUrl: baseUrl);
+
+  if (await a.login("gracon", "123")) {
+    final token = await as.obterDados();
+
+    if (token != null) {
+      //Passo 2: Alterado para Uri.https para manter a consistência do protocolo seguro
+      final urlLivros = Uri.https(baseUrl, '/api/livros/');
+
+      final resposta = await http.get(
+        urlLivros,
+        headers: {
+          "Authorization": "Bearer $token",
+          "Content-Type": "application/json",
+        },
+      );
+
+      print("Status Resposta: ${resposta.statusCode}");
+      print("Corpo: ${resposta.body}");
+    } else {
+      print("Token nulo!");
+    }
+  }
 }

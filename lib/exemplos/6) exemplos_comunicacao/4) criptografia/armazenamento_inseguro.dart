@@ -30,10 +30,10 @@ class ArmazenamentoInseguro {
   }
 }
 
+//Teste: Chrome (F12 - Application)
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-
   ArmazenamentoInseguro ai = ArmazenamentoInseguro();
 
   //gravando no armazenamento
@@ -42,5 +42,4 @@ void main() async {
   await ai.salvarDados("aprovado", true);
 
   ai.lerDados();
-
 }
