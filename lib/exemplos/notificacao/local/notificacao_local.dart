@@ -13,8 +13,8 @@ class NotificacaoLocal{
     //obrigatório um icone
     await notificador.initialize(
         settings: InitializationSettings(
-            android: AndroidInitializationSettings('@mipmap/ic_launcher')
-        )
+            android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+         )
     );
     await notificador.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
         ?.requestNotificationsPermission();
@@ -28,9 +28,10 @@ class NotificacaoLocal{
       "id_canal",
       "Notificacao Geral",
       channelDescription: "Canal para notificacao",
-      importance: Importance.max,
+      importance: Importance.low,
       priority: Priority.max,
-      enableVibration: true
+      enableVibration: true,
+      enableLights: true
     );
 
     await notificador.show(

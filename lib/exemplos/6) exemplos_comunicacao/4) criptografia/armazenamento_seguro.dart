@@ -75,7 +75,8 @@ void main() async {
 
   final as = ArmazenadorSeguro();
 
-  final String baseUrl = "http://10.25.2.91:8000/api";
+  final String baseUrl = "http://57.154.210.210:8000/api";//IP Azure
+  //final String baseUrl = "http://10.25.2.91:8000/api";//IP Local
   final a = Autenticador(baseUrl: baseUrl);
 
   if(await a.login("gracon", "123")){
