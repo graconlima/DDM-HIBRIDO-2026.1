@@ -22,7 +22,7 @@ class NotificacaoRemota{
       Uri.parse(
         "https://biblioteca.serveblog.net/firebase/tokens/"),
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"usuario": "admin","token": token})
+        body: jsonEncode({"usuario": "gracon","token": token})
       );*/
 
     //app em foreground
