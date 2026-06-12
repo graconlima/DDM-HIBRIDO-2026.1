@@ -1,7 +1,8 @@
-import 'package:ddm_20261/exemplos/notificacao/local/notificacao_local.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../modelos/notificacao.dart';
+import '../local/notificacao_local.dart';
 
 class NotificacaoRemota{
 
@@ -18,12 +19,12 @@ class NotificacaoRemota{
     print("Token: $token");
 
     //Exemplo envio ao Backend
-    /*await http.post(
+    await http.post(
       Uri.parse(
-        "https://biblioteca.serveblog.net/firebase/tokens/"),
+        "https://biblioteca.serveblog.net/api/firebase/tokens/"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({"usuario": "gracon","token": token})
-      );*/
+      );
 
     //app em foreground
     FirebaseMessaging.onMessage.listen((m){

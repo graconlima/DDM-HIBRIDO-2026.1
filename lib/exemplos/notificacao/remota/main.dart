@@ -1,11 +1,10 @@
-import 'package:ddm_20261/exemplos/notificacao/remota/notificacao_remota.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../modelos/notificacao.dart';
 import '../local/notificacao_local.dart';
+import '../remota/notificacao_remota.dart';
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
