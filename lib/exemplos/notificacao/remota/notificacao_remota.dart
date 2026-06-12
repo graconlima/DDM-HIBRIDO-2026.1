@@ -17,6 +17,14 @@ class NotificacaoRemota{
     String? token = await fm.getToken();//o token gerado deve ser enviado aos backends para enviar notificacoes
     print("Token: $token");
 
+    //Exemplo envio ao Backend
+    /*await http.post(
+      Uri.parse(
+        "https://biblioteca.serveblog.net/firebase/tokens/"),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({"usuario": "admin","token": token})
+      );*/
+
     //app em foreground
     FirebaseMessaging.onMessage.listen((m){
       nl.notificar(Notificacao(id: m.notification!.android.hashCode, titulo: m.notification?.title, body: m.notification?.body, payload: m.data['dado_extra']));
